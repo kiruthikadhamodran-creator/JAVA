@@ -1,0 +1,15 @@
+var debounce = function(fn, t) {
+    let timerId = null;
+
+    return function(...args) {
+        // Cancel previous scheduled execution
+        if (timerId !== null) {
+            clearTimeout(timerId);
+        }
+
+        // Schedule new execution
+        timerId = setTimeout(() => {
+            fn(...args);
+        }, t);
+    };
+};
